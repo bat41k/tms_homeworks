@@ -34,28 +34,29 @@ iveco = Truck(brand='Iveco', age=1, color='white', mark='S-Way', weight=10000, m
 bmw = Sedan(brand='BMW', age=1, color='black', mark='M8', weight=2000, max_speed=300)
 volkswagen = Sedan(brand='Volkswagen', age=1, color='white', mark='Golf GTI', weight=2000, max_speed=300)
 
-print(mercedes.__dict__)
-mercedes.load()
-mercedes.drive()
-mercedes.stop()
-mercedes.use()
-assert mercedes.age == 2
+if __name__ == '__main__':
+    print(mercedes.__dict__)
+    mercedes.load()
+    mercedes.drive()
+    mercedes.stop()
+    mercedes.use()
+    assert mercedes.age == 2
 
-print(iveco.__dict__)
-iveco.load()
-iveco.drive()
-iveco.stop()
-iveco.use()
-assert iveco.age == 2
+    print(iveco.__dict__)
+    iveco.load()
+    iveco.drive()
+    iveco.stop()
+    iveco.use()
+    assert iveco.age == 2
 
-print(bmw.__dict__)
-bmw.drive()
-bmw.stop()
-bmw.use()
-assert bmw.age == 2
+    print(bmw.__dict__)
+    bmw.drive()
+    bmw.stop()
+    bmw.use()
+    assert bmw.age == 2
 
-print(volkswagen.__dict__)
-volkswagen.drive()
-volkswagen.stop()
-volkswagen.use()
-assert volkswagen.age == 2
+    print(volkswagen.__dict__)
+    volkswagen.drive()
+    volkswagen.stop()
+    volkswagen.use()
+    assert volkswagen.age == 2

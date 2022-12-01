@@ -20,20 +20,21 @@ class Rectangle(Shape):
         if isinstance(other, Rectangle):
             return self.get_area() + other.get_area()
         else:
-            raise NotImplemented
+            raise TypeError
 
     def __sub__(self, other: Shape) -> int | float:
         if isinstance(other, Rectangle):
             return self.get_area() - other.get_area()
         else:
-            raise NotImplemented
+            raise TypeError
 
 
 rectangle_1 = Rectangle(length=1, width=2)
 rectangle_2 = Rectangle(length=3, width=4)
 
-assert rectangle_1.get_area() == 2
-assert rectangle_2.get_area() == 12
+if __name__ == '__main__':
+    assert rectangle_1.get_area() == 2
+    assert rectangle_2.get_area() == 12
 
-assert rectangle_1 + rectangle_2 == 14
-assert rectangle_2 - rectangle_1 == 10
+    assert rectangle_1 + rectangle_2 == 14
+    assert rectangle_2 - rectangle_1 == 10

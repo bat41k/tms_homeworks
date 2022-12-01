@@ -18,13 +18,8 @@ class Auto:
 
 audi = Auto(brand='Audi', age=1, color='black', mark='RS6', weight=2000)
 
-
-def main() -> None:
+if __name__ == '__main__':
     audi.drive()
     audi.stop()
     audi.use()
     assert audi.age == 2
-
-
-if __name__ == '__main__':
-    main()

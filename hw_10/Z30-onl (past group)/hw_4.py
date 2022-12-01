@@ -16,6 +16,8 @@ class Box:
     def add_shape(self, shape: Shape) -> None:
         if isinstance(shape, Shape):
             self._shapes.append(shape)
+        else:
+            raise TypeError('Unsupported classes cannot be added')
 
     def remove_shape(self) -> None:
         del self._shapes[-1]
@@ -25,12 +27,9 @@ class Box:
 
 
 box = Box()
+
 box.add_shape(Rectangle(length=5, width=6))
 box.add_shape(Circle(radius=3))
 
-assert box.get_common_area() == 58.27
-
-box.add_shape(Rectangle(length=7, width=8))
-box.add_shape(Circle(radius=4))
-
-assert box.get_common_area() == 164.54
+if __name__ == '__main__':
+    assert box.get_common_area() == 58.27

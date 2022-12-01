@@ -20,20 +20,21 @@ class Circle(Shape):
         if isinstance(other, Circle):
             return self.get_area() + other.get_area()
         else:
-            raise NotImplemented
+            raise TypeError
 
     def __sub__(self, other: Shape) -> int | float:
         if isinstance(other, Circle):
             return self.get_area() - other.get_area()
         else:
-            raise NotImplemented
+            raise TypeError
 
 
 circle_1 = Circle(radius=1)
 circle_2 = Circle(radius=2)
 
-assert circle_1.get_area() == 3.14
-assert circle_2.get_area() == 12.57
+if __name__ == '__main__':
+    assert circle_1.get_area() == 3.14
+    assert circle_2.get_area() == 12.57
 
-assert circle_1 + circle_2 == 15.71
-assert circle_2 - circle_1 == 9.43
+    assert circle_1 + circle_2 == 15.71
+    assert circle_2 - circle_1 == 9.43
