@@ -17,21 +17,28 @@ class Employee:
         self.last_name = last_name
         self.age = age
         self.profession = profession
+        self._onboarding_time = date(2022, 1, 1)
+        self.department = None
 
     @property
     def onboarding_time(self) -> date:
-        return date(2022, 1, 1)
+        return self._onboarding_time
+
+    @onboarding_time.setter
+    def onboarding_time(self, new_onboarding_time: date) -> None:
+        self._onboarding_time = new_onboarding_time
 
     @property
     def info(self) -> dict:
         return {'fullname': f'{self.first_name} {self.last_name}',
                 'age': self.age,
-                'working_time': f'{str((date(2022, 2, 1) - self.onboarding_time).days)} days'}
+                'working_time': f'{str((date(2022, 2, 1) - self._onboarding_time).days)} days'}
 
 
 Person = Employee(first_name='Aleksei', last_name='Podilo', age=33, profession='SEO Specialist')
 
-assert Person.onboarding_time == date(2022, 1, 1)
-assert Person.info == {'fullname': 'Aleksei Podilo',
-                       'age': 33,
-                       'working_time': '31 days'}
+if __name__ == '__main__':
+    assert Person.onboarding_time == date(2022, 1, 1)
+    assert Person.info == {'fullname': 'Aleksei Podilo',
+                           'age': 33,
+                           'working_time': '31 days'}

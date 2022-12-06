@@ -6,7 +6,7 @@
 # См. getter/setter
 
 from enum import Enum
-from uuid import uuid4
+import uuid
 
 
 class Currency(Enum):
@@ -16,10 +16,10 @@ class Currency(Enum):
 
 
 class Account:
-    def __init__(self, person_id: uuid4, currency: Currency, amount: int | float) -> None:
+    def __init__(self, person_id: uuid, currency: str, amount: int | float) -> None:
         self.person_id = person_id
         self.currency = currency
-        self._amount = amount if amount >= 0 else 0
+        self._amount = amount if amount > 0 else 0
 
     @property
     def amount(self) -> int | float:
@@ -33,7 +33,7 @@ class Account:
             self._amount = new_amount
 
 
-Person = Account(person_id=uuid4(), currency=Currency.belarussian_ruble.value, amount=100)
+Person = Account(person_id=uuid, currency=Currency.belarussian_ruble.value, amount=100)
 Person.amount = -100
 
 assert Person.amount == 100
