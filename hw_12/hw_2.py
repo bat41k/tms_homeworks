@@ -1,5 +1,4 @@
 from errors import InvalidLogin, InvalidPassword, InvalidEmail, ValidationError
-import string
 
 
 class Validator:
@@ -14,16 +13,16 @@ class Validator:
 
     @staticmethod
     def validate_login(login: str) -> bool:
-        if len(login) >= 6:
+        if len(login) > 5:
             return True
         else:
             raise InvalidLogin
 
     @staticmethod
     def validate_password(password: str) -> bool:
-        if (len(password) >= 8 and
-                len([p for p in password if p in string.ascii_lowercase]) > 0 and
-                len([p for p in password if p in string.ascii_uppercase]) > 0 and
+        if (len(password) > 7 and
+                any([p.islower() for p in password]) > 0 and
+                any([p.isupper() for p in password]) > 0 and
                 not password.isalnum()):
             return True
         else:
@@ -39,4 +38,4 @@ class Validator:
 
 if __name__ == '__main__':
     Validator.validate(('user_login', 'Some!Password', 'mail@mail.by'))
-    Validator.validate(('login', 'Some!Password', 'mail@mail.by'))
+    # Validator.validate(('login', 'Some!Password', 'mail@mail.by'))

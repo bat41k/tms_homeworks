@@ -8,38 +8,42 @@ class Queue:
     def add(cls, *args) -> None:
         for value in args:
             if value not in cls.queue:
-                if isinstance(value, int):
-                    Queue.validate_int(value)
-                if isinstance(value, float):
-                    Queue.validate_float(value)
-                if isinstance(value, str):
-                    Queue.validate_str(value)
+                if isinstance(value, int) and cls.validate_int(value):
+                    cls.queue.append(value)
+                if isinstance(value, float) and cls.validate_float(value):
+                    cls.queue.append(value)
+                if isinstance(value, str) and cls.validate_str(value):
+                    cls.queue.append(value)
             else:
                 print(InvalidDuplicate(value))
 
     @classmethod
-    def validate_int(cls, value: int) -> None:
+    def validate_int(cls, value: int) -> bool:
         if value % 8 == 0:
             if len(str(value)) < 5:
-                cls.queue.append(value)
+                return True
             else:
                 print(InvalidIntLength(value))
+                return False
         else:
             print(InvalidIntDivision(value))
+            return False
 
     @classmethod
-    def validate_float(cls, value: float) -> None:
+    def validate_float(cls, value: float) -> bool:
         if len(str(value).split('.')[1]) < 3:
-            cls.queue.append(value)
+            return True
         else:
             print(InvalidFloatLength(value))
+            return False
 
     @classmethod
-    def validate_str(cls, value: str) -> None:
+    def validate_str(cls, value: str) -> bool:
         if len(value) < 5:
-            cls.queue.append(value)
+            return True
         else:
             print(InvalidStrLength(value))
+            return False
 
 
 if __name__ == '__main__':

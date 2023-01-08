@@ -2,7 +2,6 @@ from errors import InputFormulaError, InputNumberError, InputOperatorError
 
 
 class Calculator:
-    operators = ['+', '-', '*', '/', '**']
     operation = {'+': lambda a, b: a + b,
                  '-': lambda a, b: a - b,
                  '*': lambda a, b: a * b,
@@ -24,7 +23,7 @@ class Calculator:
         except ValueError:
             raise InputNumberError
 
-        if op not in cls.operators:
+        if op not in cls.operation.keys():
             raise InputOperatorError
 
         return o_1, op, o_2
