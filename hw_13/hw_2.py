@@ -2,7 +2,7 @@ from typing import Iterator
 
 
 class MySquareIterator:
-    def __init__(self, collection: list[int]) -> None:
+    def __init__(self, collection: list[int] | tuple[int]) -> None:
         self.collection = collection
         self.counter = 0
 

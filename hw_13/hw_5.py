@@ -7,8 +7,7 @@ def endless_fib_generator() -> Generator:
     b = 1
     while True:
         yield a
-        a = b
-        b = a + b
+        a, b = b, a + b
 
 
 if __name__ == '__main__':

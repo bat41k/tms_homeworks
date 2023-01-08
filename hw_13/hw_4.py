@@ -3,7 +3,7 @@ from typing import Iterator
 
 class EvenRange:
     def __init__(self, start: int, end: int) -> None:
-        self.start = start if start % 2 == 0 else start + 1
+        self.start = start if not start % 2 else start + 1
         self.end = end
 
     def __iter__(self) -> Iterator[int]:
